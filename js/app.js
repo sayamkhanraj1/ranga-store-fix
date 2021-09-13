@@ -1,3 +1,4 @@
+// load API
 const loadProducts = () => {
   const url = `https://fakestoreapi.com/products`;
   fetch(url)
@@ -78,28 +79,3 @@ const updateTotal = () => {
   const grandTotal = getInputValue("price") + getInputValue("delivery-charge") + getInputValue("total-tax");
   document.getElementById("total").innerText = Math.abs(grandTotal).toFixed(2);
 };
-
-const productDetails = id =>{
-const url = `https://fakestoreapi.com/products/${id}`
-fetch(url)
-.then(res => res.json())
-.then(data => displayProductDetail(data))
-}
-const displayProductDetail = product =>{
-  
-       const div = document.createElement('div');
-       div.classList.add('product');
-       div.innerHTML = `
-       <div class="single-product">
-       <img class="product-image" src=${product.image}></img>
-      </div>
-      <h3>${product.title}</h3>
-      <p>Category: ${product.category}</p>
-      <h2>Price: $ ${product.price}</h2>
-      <p>Ratings: ${product.rating.rate}</p>
-      <p>Count: ${product.rating.count}</p>
-      </div>
-       `
-      document.getElementById("product-details").appendChild(div);
-
-}
